@@ -5,6 +5,10 @@ from Preprocessing import Preprocessing
 
 data = pd.read_csv("disaster_prediction.csv", encoding="utf-8")
 
+# save data that doesn't have confidence on one, to predict later
+data_unconfident = data[data.confidence != 1]
+data_unconfident.to_csv("../Data/data_unconfident.csv", index=False)
+
 data.drop("choose_one_gold", axis=1, inplace=True) # removing columns we don't need
 data.drop(data[data.choose_one == "Can't Decide"].index, inplace=True) # delete rows we don't need
 data.drop(data[data.confidence != 1].index, inplace=True) # delete rows with confidence != 1

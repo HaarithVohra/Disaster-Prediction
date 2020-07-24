@@ -32,6 +32,11 @@ class BuildModels:
         predictions_NB = Naive.predict(self.Test_X)
         self.print_results("Naive Bayes", predictions_NB)
         
+        unconfident_labels = pd.read_csv("../Data/data_unconfident.csv").text
+        new_predictions = Naive.predict(unconfident_labels)
+        pd.DataFrame(new_predictions).to_csv("../Data/unconfident_predictions.csv", index=False)
+        
+        
     def logistic_regression(self):
         LogReg = Pipeline([
             ('tfidf', TfidfVectorizer(ngram_range=(1,1))),
