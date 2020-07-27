@@ -14,8 +14,8 @@ from keras.callbacks import EarlyStopping
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.preprocessing.sequence import pad_sequences
 
-train = pd.read_csv("../Data/preprocessed_training_data.csv", encoding="utf-8")
-test = pd.read_csv("../Data/preprocessed_testing_data.csv", encoding="utf-8")
+train = pd.read_csv("../Data/training_data.csv", encoding="utf-8")
+test = pd.read_csv("../Data/testing_data.csv", encoding="utf-8")
 Train_X, Test_X, Train_Y, Test_Y = train.text, test.text, train.choose_one, test.choose_one
  
 max_words = 15000

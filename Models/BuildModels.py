@@ -13,8 +13,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 class BuildModels:
     def __init__(self):
-        train = pd.read_csv("../Data/preprocessed_training_data.csv", encoding="utf-8")
-        test = pd.read_csv("../Data/preprocessed_testing_data.csv", encoding="utf-8")
+        train = pd.read_csv("../Data/soft_labels.csv", encoding="utf-8")
+        test = pd.read_csv("../Data/testing_data.csv", encoding="utf-8")
         self.Train_X, self.Test_X, self.Train_Y, self.Test_Y = train.text, test.text, train.choose_one, test.choose_one
         self._series_to_list() # changing the series into a list
 
@@ -32,9 +32,9 @@ class BuildModels:
         predictions_NB = Naive.predict(self.Test_X)
         self.print_results("Naive Bayes", predictions_NB)
         
-        unconfident_labels = pd.read_csv("../Data/data_unconfident.csv").text
-        new_predictions = Naive.predict(unconfident_labels)
-        pd.DataFrame(new_predictions).to_csv("../Data/unconfident_predictions.csv", index=False)
+#         unconfident_labels = pd.read_csv("../Data/data_unconfident.csv").text
+#         new_predictions = Naive.predict(unconfident_labels)
+#         pd.DataFrame(new_predictions).to_csv("../Data/unconfident_predictions.csv", index=False)
         
         
     def logistic_regression(self):

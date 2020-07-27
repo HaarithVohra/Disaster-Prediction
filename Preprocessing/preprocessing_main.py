@@ -34,13 +34,18 @@ Test_Y.reset_index(inplace=True, drop=True)
 
 testing_data = pd.concat([Test_X, Test_Y], axis=1) # getting the testing data
 
+# save data (unprocessed) in csv
+training_data.to_csv("../Data/training_data.csv")
+testing_data.to_csv("../Data/testing_data.csv")
+
+
 # Preprocessing the training data
-preprocessed_train = Preprocessing(training_data)
-preprocessed_train.to_csv_file("preprocessed_training_data") # saves the file in the ../Data directory
+# preprocessed_train = Preprocessing(training_data)
+# preprocessed_train.to_csv_file("preprocessed_training_data") # saves the file in the ../Data directory
 
 # Preprocessing the testing data
-preprocessed_test = Preprocessing(testing_data)
-preprocessed_test.to_csv_file("preprocessed_testing_data") # saves the file in the ../Data directory
+# preprocessed_test = Preprocessing(testing_data)
+# preprocessed_test.to_csv_file("preprocessed_testing_data") # saves the file in the ../Data directory
 
-train = pd.read_csv("../Data/preprocessed_training_data.csv", encoding="utf-8")
-test = pd.read_csv("../Data/preprocessed_testing_data.csv", encoding="utf-8")
+# train = pd.read_csv("../Data/preprocessed_training_data.csv", encoding="utf-8")
+# test = pd.read_csv("../Data/preprocessed_testing_data.csv", encoding="utf-8")
